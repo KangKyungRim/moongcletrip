@@ -8,4 +8,4 @@ DB 및 외부 API 의존성이 높습니다.
 코드 구조 및 설계 위주로 확인해주시기 바랍니다.
 
 ## Demo URL
-https://moongcletrip-demo.onrender.com
+https://moongcletrip.onrender.com/
