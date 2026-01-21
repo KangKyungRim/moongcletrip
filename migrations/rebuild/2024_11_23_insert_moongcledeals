@@ -1,0 +1,28 @@
+<?php
+
+use Illuminate\Database\Capsule\Manager as Capsule;
+use Illuminate\Database\Schema\Blueprint;
+
+// 마이그레이션 실행
+if (Capsule::schema()->hasTable('curated_tags')) {
+    // 외래 키 제약 무시 설정
+    Capsule::statement('SET FOREIGN_KEY_CHECKS = 0');
+
+    Capsule::schema()->drop('curated_tags');
+
+    // 외래 키 제약 복원
+    Capsule::statement('SET FOREIGN_KEY_CHECKS = 1');
+
+    Capsule::schema()->create('curated_tags', function (Blueprint $table) {
+        $table->bigIncrements('curated_tag_idx');  // 기본 키
+        $table->bigInteger('tag_idx')->unsigned()->index();  // 태그 외래 키
+        $table->string('tag_name', 255)->index();
+        $table->string('tag_machine_name', 255)->index();
+        $table->bigInteger('item_idx')->unsigned()->index();  // 연결된 모델의 ID (moongcleoffer_idx, moongclebundle_idx 등)
+        $table->string('item_type', 50)->index();  // 연결된 모델 (moongcleoffer, moongclebundle 등)
+        $table->timestamps();
+
+        // 외래 키 설정
+        $table->foreign('tag_idx')->references('tag_idx')->on('moongcle_tags')->onDelete('cascade');
+    });
+}

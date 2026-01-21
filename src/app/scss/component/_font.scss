@@ -1,0 +1,225 @@
+.ft {
+    &-bold {
+        font-weight: 600;
+    }
+    &-xxs {
+        font-size: $font_size_xxs;
+    }
+    &-xs {
+        font-size: $font_size_xs;
+    }
+    &-s {
+        font-size: $font_size_s;
+    }
+    &-m {
+        font-size: $font_size_m;
+    }
+    &-default {
+        font-size: $font_size_default;
+    }
+    &-l {
+        font-size: $font_size_l;
+    }
+    &-xl {
+        font-size: $font_size_xl;
+    }
+    &-xxl {
+        font-size: $font_size_xxl;
+    }
+    &-xxxl {
+        font-size: $font_size_xxxl;
+    }
+}
+
+.txt {
+    &-primary {
+        color: $primary_color;
+    }
+    &-black {
+        color: $primary_black;
+    }
+    &-gray {
+        color: $primary_gray;
+    }
+    &-red {
+        color: $red_color;
+    }
+    &-yellow {
+        color: $highlight_color;
+    }
+    &-point {
+        color: $primary_point;
+    }
+
+    &-warning {
+        @include flexbox($js: start);
+        color: $primary_color;
+        font-size: $font_size_xxs;
+        font-weight: 400;
+        &:before {
+            content: "";
+            width: 1rem;
+            height: 1rem;
+            margin-right: 0.4rem;
+            @include bgimage(
+                $url: $image_root + "common/ico_warning.svg",
+                $pos: left center
+            );
+        }
+    }
+
+    &-red-warning {
+        @include flexbox($js: start);
+        color: $red_color;
+        font-size: $font_size_xxs;
+        font-weight: 400;
+        &:before {
+            content: "";
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-right: 0.4rem;
+            @include bgimage(
+                $url: $image_root + "common/ico_info_red.svg",
+                $pos: left center
+            );
+        }
+    }
+
+    &-primary-warning {
+        @include flexbox($js: start);
+        color: $primary_color;
+        font-size: $font_size_xxs;
+        font-weight: 400;
+        &:before {
+            content: "";
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-right: 0.4rem;
+            @include bgimage(
+                $url: $image_root + "common/ico_info_purple.svg",
+                $pos: left center
+            );
+        }
+    }
+
+    &-primary-check {
+        @include flexbox($js: start);
+        gap: 0.5rem;
+        color: $primary_color;
+        font-size: $font_size_xxs;
+        font-weight: 400;
+        &:before {
+            content: "";
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-right: 0.4rem;
+            @include bgimage(
+                $url: $image_root + "common/ico_check_text.svg",
+                $pos: left center
+            );
+        }
+    }
+}
+
+.tit__wrap {
+    [class*="ft-"] {
+        font-weight: 600;
+    }
+    & + .btn__wrap {
+        padding-top: 2.4rem;
+    }
+    & + .bullet-wrap {
+        padding-top: 0.8rem;
+    }
+}
+
+.align {
+    &__center {
+        text-align: center;
+    }
+    &__left {
+        text-align: left;
+    }
+    &__right {
+        text-align: right;
+    }
+}
+
+.bullet__wrap {
+    & + & {
+        margin-top: 3rem;
+    }
+    .title {
+        padding-bottom: 1.2rem;
+        font-size: $font_size_default;
+        font-weight: 600;
+    }
+    .desc {
+        font-size: $font_size_default;
+        line-height: 1.6;
+        color: $primary_gray;
+        font-weight: 400;
+    }
+    & > ul {
+        & > li {
+            position: relative;
+            padding-left: 2rem;
+            font-size: $font_size_default;
+            line-height: 1.6;
+            color: $primary_gray;
+            font-weight: 400;
+            &::before {
+                content: "";
+                background: #686e75;
+                position: absolute;
+                left: 0.5rem;
+                top: 1rem;
+                width: 0.4rem;
+                height: 0.4rem;
+                border-radius: 50%;
+            }
+            & > ul {
+                & > li {
+                    position: relative;
+                    padding-left: 2rem;
+                    font-size: $font_size_default;
+                    line-height: 1.6;
+                    color: $primary_gray;
+                    font-weight: 400;
+                    &::before {
+                        content: "";
+                        background: #686e75;
+                        position: absolute;
+                        left: 0.5rem;
+                        top: 1rem;
+                        width: 0.4rem;
+                        height: 0.4rem;
+                        border-radius: 50%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.tb__wrap {
+    width: 100%;
+    border-radius: 1.6rem;
+    overflow: hidden;
+    margin-bottom: 1.2rem;
+    th {
+        background-color: #eef0f2;
+        padding: 1rem 0;
+        color: $primary_gray;
+        font-size: $font_size_s;
+        font-weight: 600;
+    }
+    td {
+        background-color: #f8f8f8;
+        padding: 1rem 0;
+        color: $primary_gray;
+        font-size: $font_size_s;
+        font-weight: 400;
+        text-align: center;
+    }
+}

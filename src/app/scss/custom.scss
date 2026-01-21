@@ -1,0 +1,540 @@
+html,
+body {
+    overscroll-behavior-y: contain;
+}
+
+.d-none {
+    display: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.reservation-collapse {
+    overflow: hidden;
+    transition: height 0.5s ease, opacity 0.5s ease;
+    opacity: 1;
+    height: auto;
+}
+
+.reservation-collapse.vhidden {
+    height: 0;
+    opacity: 0;
+}
+
+.detail-info {
+    position: relative;
+    padding-left: 0.5rem;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: #696d70;
+    font-weight: 400;
+    white-space: pre-wrap;
+}
+
+.stay-detail-info {
+    position: relative;
+    padding-left: 0.5rem;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: #696d70;
+    font-weight: 400;
+}
+
+.rateplan-detail-info {
+    position: relative;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: #696d70;
+    font-weight: 400;
+    white-space: pre-wrap;
+}
+
+.enable-scroll {
+    max-height: 100vh;
+    overflow-y: auto;
+}
+
+.room-name-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* 전체 화면 덮는 로더 배경 */
+.loader {
+    display: none;
+    /* 기본값은 숨김 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+/* 로딩 스피너 */
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 6px solid #ddd;
+    border-top: 6px solid #714cdc;
+    /* 회전하는 색상 부분 */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* 스피너 애니메이션 */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+li > a > .tag-text-width {
+    word-wrap: break-word;
+    /* 긴 단어를 줄바꿈 */
+    word-break: break-word;
+    /* 단어 경계에서 줄바꿈 */
+    overflow-wrap: break-word;
+    /* CSS3 권장 방식 */
+    white-space: normal;
+    /* 텍스트가 한 줄에 계속 있지 않게 */
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.thumbImage {
+    height: 100%;
+    width: 100%;
+    vertical-align: bottom;
+    object-fit: cover;
+    border-radius: 1.2rem;
+}
+
+.modal-scroll {
+    max-height: 90%;
+    width: 80%;
+    background: #fff;
+    overflow-y: auto;
+    /* 내부 스크롤 활성화 */
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.video-element {
+    width: 100%;
+    height: 100%;
+}
+
+.extra-price-warning {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.extra-price-warning .tooltip {
+    visibility: hidden;
+    opacity: 0;
+    background-color: #515151;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    padding: 0.5rem;
+    position: absolute;
+    z-index: 1000;
+    top: 125%;
+    /* 아래에 보이도록 설정 */
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: 1rem;
+    /* 폰트 크기 증가 */
+    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+}
+
+.extra-price-warning .tooltip::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    /* 삼각형을 위로 이동 */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #515151 transparent;
+    /* 화살표 색상 */
+}
+
+.extra-price-warning:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.splide__slide {
+    position: relative !important;
+    overflow: hidden;
+    /* 이미지가 슬라이드 밖으로 나가지 않도록 설정 */
+}
+
+.splide__moongcle .splide__slide {
+    height: 100% !important;
+}
+
+.splide__point .splide__slide {
+    height: 44rem !important;
+}
+
+.splide__close .splide__slide {
+    height: auto !important;
+}
+
+.splide__slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+}
+
+.splide__slide .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 25%;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 36%));
+    z-index: 1;
+}
+
+.splide__slide .text-overlay {
+    position: absolute;
+    bottom: 10%;
+    /* 텍스트가 이미지 하단 위쪽에 위치 */
+    left: 5%;
+    // transform: translateX(-50%);
+    text-align: center;
+    color: white;
+    z-index: 5;
+}
+
+.splide__slide .text-overlay h2 {
+    font-size: 1.5rem;
+    margin: 0;
+    font-weight: bold;
+}
+
+.splide__slide .text-overlay p {
+    font-size: 1rem;
+    margin: 0.5rem 0 0;
+}
+
+.splide__slide .text-overlay-top {
+    position: absolute;
+    top: 10%;
+    /* 텍스트가 이미지 하단 위쪽에 위치 */
+    right: 5%;
+    // transform: translateX(-50%);
+    text-align: center;
+    color: white;
+    z-index: 2;
+}
+
+.splide__slide .text-overlay-top p {
+    font-size: 1.35rem;
+}
+
+.thumb__img > img {
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    object-fit: cover;
+}
+
+.splide__slide .room-list__con {
+    padding-bottom: 6rem;
+}
+
+.overflow {
+    overflow: hidden;
+}
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translate(-50%, 0);
+        /* 초기 위치 */
+    }
+
+    50% {
+        transform: translate(-50%, 10px);
+        /* 위로 10px 이동 */
+    }
+}
+
+.price-label {
+    font-size: 1rem;
+    color: #989898;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    white-space: nowrap;
+    z-index: -1;
+}
+
+.flatpickr-day {
+    position: relative;
+}
+
+.hashtag-image {
+    content: "";
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-right: 0.8rem;
+    background-image: url(../images/layout/ico_sharp_big.png);
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.more-loader {
+    width: 20px;
+    aspect-ratio: 1;
+    display: grid;
+    // transform: translateY(100%);
+    margin: 20px auto;
+    position: relative;
+    bottom: 10rem;
+}
+
+.more-loader::before,
+.more-loader::after {
+    content: "";
+    grid-area: 1/1;
+    border-radius: 50%;
+    transform-origin: bottom;
+    position: relative;
+}
+
+.more-loader::before {
+    background: radial-gradient(at 30% 30%, #0000, #000a) $primary_color;
+    transform: scaleY(0.65);
+    top: 0;
+    animation: l11-1, l11-2;
+    animation-duration: 2s;
+    animation-timing-function: cubic-bezier(0, 400, 1, 400), ease;
+    animation-iteration-count: infinite;
+}
+
+.more-loader::after {
+    background: #ccc;
+    filter: blur(8px);
+    transform: scaleY(0.3) translate(0px, 0px);
+    left: 0;
+    animation: l11-3 2s cubic-bezier(0, 400, 1, 400) infinite;
+}
+
+@keyframes l11-1 {
+    100% {
+        top: -0.2px;
+    }
+}
+
+@keyframes l11-2 {
+    4%,
+    96% {
+        transform: scaleY(1);
+    }
+}
+
+@keyframes l11-3 {
+    100% {
+        transform: scaleY(0.3) translate(0.1px, -0.1px);
+    }
+}
+
+.recommend-stay-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+
+    .recommend-stay {
+        background-color: #f5f5f5;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 6.5rem;
+        height: 6.5rem;
+        border-radius: 1.6rem;
+        border: 1px solid #c7c7cc;
+        text-align: center;
+        cursor: pointer;
+
+        .img {
+            width: 3rem;
+            height: 3rem;
+            margin: 0 auto;
+        }
+
+        .txt {
+            padding-top: 0.2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #714cdc;
+        }
+    }
+}
+
+.required-indicator {
+    color: red;
+    margin-left: 4px;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+.input-default.invalid {
+    border-color: red;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.beta-text {
+    font-size: 1rem;
+    font-style: italic;
+    color: #714cdc;
+    padding-left: 0.3rem;
+}
+
+.scroll-enabled {
+    max-height: calc(100vh - env(safe-area-inset-top) - 4.8rem);
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.image-text-wrapper {
+    position: absolute;
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    text-align: center;
+    z-index: 10;
+}
+
+.image-text-wrapper .image-text {
+    display: inline-block;
+    // background: rgba(0, 0, 0, 0.6); /* 반투명 배경 */
+    color: white; /* 텍스트 색상 */
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1.6rem;
+    word-wrap: break-word; /* 텍스트가 너비를 초과하면 줄바꿈 */
+    word-break: keep-all;
+    max-width: 100%; /* 배경이 텍스트 길이에 맞춰 조정 */
+    box-sizing: border-box;
+}
+
+.splide_cover {
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+.image-position-center {
+    align-self: center;
+}
+
+.height-auto {
+    height: auto !important;
+}
+
+.accordion__con_custom {
+    display: block;
+}
+
+.splide__pagination__page.is-active {
+    background-color: #714cdc;
+}
+
+.btn-my {
+    width: 2.4rem;
+    height: 2.4rem;
+    background-image: url(../images/common/ico_my.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+// range slider
+#price-slider {
+    margin: 2.5rem 0;
+    height: 0.4rem;
+    background: #ebebeb;
+    border: 0px;
+    box-shadow: none;
+    border-radius: 10rem;
+
+    .price-value {
+        display: flex;
+        justify-content: space-between;
+        font-size: 18px;
+        color: #666;
+    }
+
+    .noUi-connect {
+        background: #6c43e2;
+    }
+
+    .noUi-handle {
+        border: 2px solid #6c43e2;
+        background: #fff;
+        box-shadow: none;
+        border-radius: 100%;
+    }
+
+    .noUi-handle-upper {
+        right: 0px;
+    }
+
+    .noUi-handle:after,
+    .noUi-handle:before {
+        display: none;
+    }
+
+    .noUi-handle {
+        width: 2rem;
+        height: 2rem;
+        top: -8px;
+        cursor: pointer;
+    }
+}
+
+.price-range {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.2rem;
+
+    span {
+        font-size: 1.2rem;
+        color: #696d70;
+        display: inline-block;
+    }
+}

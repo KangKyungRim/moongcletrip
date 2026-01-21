@@ -1,0 +1,7 @@
+.env
+/public/robots.txt
+/node_modules
+/storage
+/public/uploads
+/sessions
+/config/mungkeul-trip-*
